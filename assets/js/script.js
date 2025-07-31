@@ -14,7 +14,6 @@ window.addEventListener('scroll', () => {
    sections.forEach((section) => {
       const rect = section.getBoundingClientRect();
       if (rect.top <= 90 && rect.bottom > 90) {
-         // Section is in view (adjust 90px to match navbar height)
          currentSectionId = section.getAttribute('id');
       }
    });
@@ -24,5 +23,14 @@ window.addEventListener('scroll', () => {
       if (link.getAttribute('href') === '#' + currentSectionId) {
          link.classList.add('active');
       }
+   });
+});
+
+const tabButtons = document.querySelectorAll('.tab-btn');
+
+tabButtons.forEach((btn) => {
+   btn.addEventListener('click', () => {
+      tabButtons.forEach((b) => b.classList.remove('tab-active'));
+      btn.classList.add('tab-active');
    });
 });
